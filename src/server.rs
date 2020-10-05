@@ -1,6 +1,11 @@
 /// All of this is now in another module now
 use std::{thread, time};
 use std::sync::{Arc};
+use std::fmt;
+use std::net::{TcpListener, TcpStream, IpAddr, Ipv4Addr, Ipv6Addr};
+use std::str::FromStr;
+use std::os::unix::io::{AsRawFd, IntoRawFd, FromRawFd};
+use std::io::{Read, Write};
 
 use crate::queue::{Queue};
 
@@ -24,7 +29,17 @@ impl Worker {
 
 }
 
+fn handle_connection(mut stream: TcpStream) {
+    let mut buffer = [0; 1024];
 
+    stream.read(&mut buffer).unwrap();
+
+    println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
+    let response = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-length: 43\r\nContent-type: text/html\r\n\r\n<html><body><h2>A Heading</h2><body></html>";
+
+    stream.write(response.as_bytes()).unwrap();
+    stream.flush().unwrap();
+}
 
 pub struct Server 
 {
@@ -37,6 +52,7 @@ impl Server
 {
     pub fn listen(&self)  
     {
+
         let qdata = Arc::new(Queue::new(self.m_nbr_workers));
         
         let mut workers: Vec<Worker> = Vec::with_capacity(self.m_nbr_workers);
@@ -50,9 +66,10 @@ impl Server
                 let mut continue_flag = true;
                 while continue_flag {
                     let q = &*qdata2;
-                    let sock =  q.remove();
-                    println!("worker loop id: {} sock: {}", thread_id_2, sock);
-                    continue_flag = sock != -1;
+                    let stream =  q.remove();
+                    println!("worker loop id: {} fd: {}", thread_id_2, stream.as_raw_fd());
+                    // continue_flag = sock != -1;
+                    handle_connection(stream);
                     std::thread::yield_now();
                     thread::sleep(time::Duration::from_secs(1));
                 }
@@ -60,18 +77,23 @@ impl Server
                 return 0;
             }));
         };
-        
         thread::sleep(time::Duration::from_secs(2));
-        println!("Main thread before add");
-        for ix in 0..10 {
+        println!("Main thread before listen");
+
+        let listener = TcpListener::bind((self.m_host.to_string(), self.m_port)).unwrap();
+        for stream in listener.incoming() {
+            let stream = stream.unwrap();
+            // let fd = stream.as_raw_fd();
+            println!("Connection established! fd: {}", stream.as_raw_fd());
             let q = &*qdata;
-            q.add(ix);
+            q.add_stream(stream);
         }
+        // got here if 
         println!("Main thread after add");
         // forever loop - listening
         for ix in 0..self.m_nbr_workers {
             let q = &*qdata;
-            q.add(-1);
+            // q.add(None);
         }
         println!("Main thread before join");
 
