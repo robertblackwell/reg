@@ -54,10 +54,11 @@ impl Server
                 //     println!("Thread loop thread_id: {} counter: {}\n", thread_id_2, counter);
                 // }
                 let mut continue_flag = true;
-                while (continue_flag) {
-                    let sock =  *qdata2.remove();
+                while continue_flag {
+                    let q = &*qdata2;
+                    let sock =  q.remove();
                     println!("worker loop id: {} sock: {} \n", thread_id_2, sock);
-                    continue_flag = (sock != -1);
+                    continue_flag = sock != -1;
                 }
                 return 0;
             }));
@@ -65,10 +66,12 @@ impl Server
         
         thread::sleep(time::Duration::from_secs(10));
         for ix in 0..100 {
-            if(ix == 99) {
-                *qdata.add(-1);
+            if ix == 99 {
+                let q = &*qdata;
+                q.add(-1);
             } else {
-                *qdara.add(ix);
+                let q = &*qdata;
+                q.add(ix);
             }
         }
         // forever loop - listening
