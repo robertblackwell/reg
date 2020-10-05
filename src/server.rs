@@ -47,34 +47,33 @@ impl Server
             let thread_id_2 = thread_id;
 
             handles.push(thread::spawn(move || {
-                // capture data
-                // do whatever
-                // for counter in 0..10 {
-                //     thread::sleep(time::Duration::from_secs(2));
-                //     println!("Thread loop thread_id: {} counter: {}\n", thread_id_2, counter);
-                // }
                 let mut continue_flag = true;
                 while continue_flag {
                     let q = &*qdata2;
                     let sock =  q.remove();
-                    println!("worker loop id: {} sock: {} \n", thread_id_2, sock);
+                    println!("worker loop id: {} sock: {}", thread_id_2, sock);
                     continue_flag = sock != -1;
+                    std::thread::yield_now();
+                    thread::sleep(time::Duration::from_secs(1));
                 }
+                println!("worker loop id: {} exit", thread_id_2);
                 return 0;
             }));
         };
         
-        thread::sleep(time::Duration::from_secs(10));
-        for ix in 0..100 {
-            if ix == 99 {
-                let q = &*qdata;
-                q.add(-1);
-            } else {
-                let q = &*qdata;
-                q.add(ix);
-            }
+        thread::sleep(time::Duration::from_secs(2));
+        println!("Main thread before add");
+        for ix in 0..10 {
+            let q = &*qdata;
+            q.add(ix);
         }
+        println!("Main thread after add");
         // forever loop - listening
+        for ix in 0..self.m_nbr_workers {
+            let q = &*qdata;
+            q.add(-1);
+        }
+        println!("Main thread before join");
 
         for handle in handles.into_iter() {
             handle.join().unwrap();

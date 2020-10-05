@@ -20,7 +20,7 @@ impl Queue {
         Queue {
             rdr_cvar: Condvar::new(),
             wrtr_cvar: Condvar::new(),
-            mutex: Mutex::new(LinkList::<i32>::new()),
+            mutex: Mutex::new(LinkedList::<i32>::new()),
             capacity: capacity,
             // list: RefCell::new(LinkedList::<i32>::new())
         }
@@ -28,33 +28,33 @@ impl Queue {
     }
     pub fn add(self: &Queue, sock: i32) {
         let q = self;
-        let max:i32  = self.capacity.try_into().unwrap();
+        let max: usize  = self.capacity.try_into().unwrap();
         let guard = self.mutex.lock().unwrap();
-        let mut guard = self.wrtr_cvar.wait_while(guard, |list| *list.len() > max).unwrap();
+        let mut guard = self.wrtr_cvar.wait_while(guard, |list| (*list).len() > max).unwrap();
 
-        println!("Queue::add  *guard {} \n", *guard);
+        // println!("Queue::add  *guard {} \n", (*guard).len());
         
-        *guard.push_back(sock);
+        (*guard).push_back(sock);
 
-        if *guard.len() > 0 {
+        if (*guard).len() > 0 {
             self.rdr_cvar.notify_one();
         }
-        if *guard.len() < max {
+        if (*guard).len() < max {
             q.wrtr_cvar.notify_one();
         }
     }
     pub fn remove(self: &Queue) -> i32 {
         let guard = self.mutex.lock().unwrap();
-        let mut guard = self.rdr_cvar.wait_while(guard, |list| *list.len() <= 0).unwrap();
+        let mut guard = self.rdr_cvar.wait_while(guard, |list| (*list).len() <= 0).unwrap();
 
-        println!("Queue::remove guard  = {}\n", *guard);
+        // println!("Queue::remove guard  = {}\n", (*guard).len());
         
-        let result = *guard.pop_front().unwrap();
+        let result = (*guard).pop_front().unwrap();
         
-        if *guard.len() > 0 {
+        if (*guard).len() > 0 {
             self.rdr_cvar.notify_one();
         }
-        if *guard.len() < 10 {
+        if (*guard).len() < 10 {
             self.wrtr_cvar.notify_one();
         }
         return result;
