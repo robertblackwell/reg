@@ -49,14 +49,28 @@ impl Server
             handles.push(thread::spawn(move || {
                 // capture data
                 // do whatever
-                for counter in 0..10 {
-                    thread::sleep(time::Duration::from_secs(2));
-                    println!("Thread loop thread_id: {} counter: {}\n", thread_id_2, counter);
+                // for counter in 0..10 {
+                //     thread::sleep(time::Duration::from_secs(2));
+                //     println!("Thread loop thread_id: {} counter: {}\n", thread_id_2, counter);
+                // }
+                let mut continue_flag = true;
+                while (continue_flag) {
+                    let sock =  *qdata2.remove();
+                    println!("worker loop id: {} sock: {} \n", thread_id_2, sock);
+                    continue_flag = (sock != -1);
                 }
                 return 0;
             }));
         };
         
+        thread::sleep(time::Duration::from_secs(10));
+        for ix in 0..100 {
+            if(ix == 99) {
+                *qdata.add(-1);
+            } else {
+                *qdara.add(ix);
+            }
+        }
         // forever loop - listening
 
         for handle in handles.into_iter() {
