@@ -7,8 +7,9 @@ use std::net::{TcpStream};
 const NBR_WORKERS: usize = 5;
 const QUEUE_MAX: usize = 5;
 
-pub struct QueueEntry {
-    stream: TcpStream
+pub enum QueueEntry {
+    Stream(TcpStream),
+    Terminate,
 }
 
 pub struct Queue {
@@ -32,9 +33,12 @@ impl Queue {
     }
     pub fn add_stream(self: &Queue, strm: TcpStream)
     {
-        let qentry = QueueEntry{
-            stream: strm,
-        };
+        let qentry = QueueEntry::Stream(strm);
+        self.add(qentry);
+    }
+    pub fn add_terminate(self: &Queue)
+    {
+        let qentry = QueueEntry::Terminate;
         self.add(qentry);
     }
 
@@ -54,13 +58,22 @@ impl Queue {
             q.wrtr_cvar.notify_one();
         }
     }
-    pub fn remove(self: &Queue) -> TcpStream {
+    pub fn remove(self: &Queue) -> Option<TcpStream> {
         let guard = self.mutex.lock().unwrap();
         let mut guard = self.rdr_cvar.wait_while(guard, |list| (*list).len() <= 0).unwrap();
 
         // println!("Queue::remove guard  = {}\n", (*guard).len());
         
-        let result = (*guard).pop_front().unwrap().stream;
+        let pop_result = (*guard).pop_front().unwrap();
+        let mut result: Option<TcpStream> = None;
+
+        if let QueueEntry::Stream(strm_result) = pop_result {
+            println!("Got a stream from queue");
+            result = Some(strm_result);
+        } else {
+            println!("Got a terminate");
+            result = None;
+        }
         
         if (*guard).len() > 0 {
             self.rdr_cvar.notify_one();

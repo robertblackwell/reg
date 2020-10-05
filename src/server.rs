@@ -66,12 +66,16 @@ impl Server
                 let mut continue_flag = true;
                 while continue_flag {
                     let q = &*qdata2;
-                    let stream =  q.remove();
-                    println!("worker loop id: {} fd: {}", thread_id_2, stream.as_raw_fd());
-                    // continue_flag = sock != -1;
-                    handle_connection(stream);
-                    std::thread::yield_now();
-                    thread::sleep(time::Duration::from_secs(1));
+                    let streamopt =  q.remove();
+                    if let Some(stream) = streamopt {
+                        println!("worker loop id: {} fd: {}", thread_id_2, stream.as_raw_fd());
+                        // continue_flag = sock != -1;
+                        handle_connection(stream);
+                        std::thread::yield_now();
+                        thread::sleep(time::Duration::from_secs(1));
+                    } else {
+                        break;
+                    }
                 }
                 println!("worker loop id: {} exit", thread_id_2);
                 return 0;
@@ -87,13 +91,14 @@ impl Server
             println!("Connection established! fd: {}", stream.as_raw_fd());
             let q = &*qdata;
             q.add_stream(stream);
+            break;
         }
         // got here if 
         println!("Main thread after add");
         // forever loop - listening
         for ix in 0..self.m_nbr_workers {
             let q = &*qdata;
-            // q.add(None);
+            q.add_terminate();
         }
         println!("Main thread before join");
 
