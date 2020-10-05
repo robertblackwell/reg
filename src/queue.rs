@@ -10,9 +10,9 @@ const QUEUE_MAX: usize = 5;
 pub struct Queue {
     rdr_cvar: Condvar,
     wrtr_cvar: Condvar,
-    mutex: Mutex<i32>,
+    mutex: Mutex<LinkedList<i32>>,
     capacity: usize,
-    list: RefCell::<LinkedList<i32>>,
+    // list: RefCell::<LinkedList<i32>>,
 }
 
 impl Queue {
@@ -20,9 +20,9 @@ impl Queue {
         Queue {
             rdr_cvar: Condvar::new(),
             wrtr_cvar: Condvar::new(),
-            mutex: Mutex::new(0),
+            mutex: Mutex::new(LinkList::<i32>::new()),
             capacity: capacity,
-            list: RefCell::new(LinkedList::<i32>::new())
+            // list: RefCell::new(LinkedList::<i32>::new())
         }
 
     }
@@ -30,32 +30,31 @@ impl Queue {
         let q = self;
         let max:i32  = self.capacity.try_into().unwrap();
         let guard = self.mutex.lock().unwrap();
-        let mut guard = self.wrtr_cvar.wait_while(guard, |n| *n > max).unwrap();
+        let mut guard = self.wrtr_cvar.wait_while(guard, |list| *list.len() > max).unwrap();
 
         println!("Queue::add  *guard {} \n", *guard);
         
-        self.list.borrow_mut().push_back(sock);
-        *guard += 1;
+        *guard.push_back(sock);
 
-        if *guard > 0 {
+        if *guard.len() > 0 {
             self.rdr_cvar.notify_one();
         }
-        if *guard < max {
+        if *guard.len() < max {
             q.wrtr_cvar.notify_one();
         }
     }
     pub fn remove(self: &Queue) -> i32 {
         let guard = self.mutex.lock().unwrap();
-        let mut guard = self.rdr_cvar.wait_while(guard, |n| *n <= 0).unwrap();
+        let mut guard = self.rdr_cvar.wait_while(guard, |list| *list.len() <= 0).unwrap();
 
         println!("Queue::remove guard  = {}\n", *guard);
         
-        *guard -= 1;
-        let result = self.list.borrow_mut().pop_front().unwrap();
-        if *guard > 0 {
+        let result = *guard.pop_front().unwrap();
+        
+        if *guard.len() > 0 {
             self.rdr_cvar.notify_one();
         }
-        if *guard < 10 {
+        if *guard.len() < 10 {
             self.wrtr_cvar.notify_one();
         }
         return result;
