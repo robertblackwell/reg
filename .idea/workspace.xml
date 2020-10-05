@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9fe5ebc4-67a3-417d-bf07-1a2a136bf28a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="jdszun65" />
+  </component>
+  <component name="ProjectId" id="1i6h1XpbsBBtibuWIdNF41Jcgjq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package desintegration_example --bin my_executable" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9fe5ebc4-67a3-417d-bf07-1a2a136bf28a" name="Default Changelist" comment="" />
+      <created>1601233735071</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601233735071</updated>
+      <workItem from="1601233737507" duration="669000" />
+      <workItem from="1601239628923" duration="3000" />
+      <workItem from="1601862348004" duration="146000" />
+      <workItem from="1601862610076" duration="199000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="728" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601862807878">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state x="728" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1362@0.27.2560.1362" timestamp="1601862807878" />
+    <state x="1070" y="389" width="424" height="513" key="FileChooserDialogImpl" timestamp="1601862434271">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state x="1070" y="389" width="424" height="513" key="FileChooserDialogImpl/0.27.2560.1362@0.27.2560.1362" timestamp="1601862434271" />
+    <state width="2514" height="346" key="GridCell.Tab.0.bottom" timestamp="1601862617594">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2514" height="346" key="GridCell.Tab.0.bottom/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617594" />
+    <state width="2514" height="346" key="GridCell.Tab.0.center" timestamp="1601862617593">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2514" height="346" key="GridCell.Tab.0.center/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617593" />
+    <state width="2514" height="346" key="GridCell.Tab.0.left" timestamp="1601862617593">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2514" height="346" key="GridCell.Tab.0.left/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617593" />
+    <state width="2514" height="346" key="GridCell.Tab.0.right" timestamp="1601862617593">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2514" height="346" key="GridCell.Tab.0.right/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617593" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/bin/my_executable.rs</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/bin/my_executable.rs</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/bin/my_executable.rs</url>
+          <line>22</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
