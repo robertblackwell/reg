@@ -29,6 +29,10 @@ impl Worker {
 
 }
 
+fn request_handler() {
+    
+}
+
 fn handle_connection(mut stream: TcpStream) {
     let mut buffer = [0; 1024];
 
@@ -91,7 +95,6 @@ impl Server
             println!("Connection established! fd: {}", stream.as_raw_fd());
             let q = &*qdata;
             q.add_stream(stream);
-            break;
         }
         // got here if 
         println!("Main thread after add");
