@@ -1,4 +1,8 @@
 /// All of this is now in another module now
+extern crate httpreader;
+use httpreader::HttpReader;
+use httpreader::HttpMessage;
+
 use std::{thread, time};
 use std::sync::{Arc};
 use std::fmt;
@@ -18,9 +22,7 @@ pub struct Worker {
 }
 
 impl Worker {
-    pub fn calculate_w(&self) -> i16 {
-        self.w_2 * self.w_3
-    }
+
     fn run(queue: Arc<Queue>) {
         while true {
             
@@ -32,8 +34,13 @@ impl Worker {
 fn request_handler() {
     
 }
-
-fn handle_connection(mut stream: TcpStream) {
+fn handle_connection_v2(mut stream: TcpStream) {
+    let mut reader = HttpReader::new(stream);
+    let mut msg = HttpMessage::new();
+    let r = reader.read(&mut msg);
+    println!("Done");
+}
+fn handle_connection_v1(mut stream: TcpStream) {
     let mut buffer = [0; 1024];
 
     stream.read(&mut buffer).unwrap();
@@ -74,7 +81,7 @@ impl Server
                     if let Some(stream) = streamopt {
                         println!("worker loop id: {} fd: {}", thread_id_2, stream.as_raw_fd());
                         // continue_flag = sock != -1;
-                        handle_connection(stream);
+                        handle_connection_v2badblock(stream);
                         std::thread::yield_now();
                         thread::sleep(time::Duration::from_secs(1));
                     } else {

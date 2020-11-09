@@ -1,7 +1,4 @@
-/// This is now an executable, technically is no longer part of the crate
-/// so we have to call the library `src/lib.rs` as an external crate
-
-extern crate reg;
+extern crate wpool;
 
 use reg::server::*;
 

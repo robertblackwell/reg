@@ -1,0 +1,1 @@
+/home/robert/Projects/language_compare/rust/wpool/target/debug/libwpool.rlib: /home/robert/Projects/language_compare/rust/wpool/src/lib.rs /home/robert/Projects/language_compare/rust/wpool/src/queue.rs /home/robert/Projects/language_compare/rust/wpool/src/server.rs

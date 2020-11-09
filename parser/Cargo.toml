@@ -1,0 +1,16 @@
+[package]
+name = "httpreader"
+version = "0.3.2"
+authors = ["Nikita Baksalyar <nikita.baksalyar@gmail.com>"]
+build = "build.rs"
+description = "Rust Streaming HTTP parser based on nodejs/http-parser"
+documentation = "http://nbaksalyar.github.io/rust-streaming-http-parser/"
+repository = "https://github.com/nbaksalyar/rust-streaming-http-parser"
+keywords = ["http", "web"]
+license = "MIT"
+
+[dependencies]
+libc = "0.2"
+
+[build-dependencies]
+cc = "1.0"

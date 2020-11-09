@@ -12,7 +12,16 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fe5ebc4-67a3-417d-bf07-1a2a136bf28a" name="Default Changelist" comment="" />
+    <list default="true" id="9fe5ebc4-67a3-417d-bf07-1a2a136bf28a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bin/simple_server.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/queue.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server.rs" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,11 +45,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../c_opaque" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Cargo.main">
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package desintegration_example --bin my_executable" />
@@ -53,6 +64,22 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="main" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package reg --bin main" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Cargo.Run" />
+      <item itemvalue="Cargo.main" />
+    </list>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
@@ -72,6 +99,10 @@
       <workItem from="1601239628923" duration="3000" />
       <workItem from="1601862348004" duration="146000" />
       <workItem from="1601862610076" duration="199000" />
+      <workItem from="1602614141764" duration="3134000" />
+      <workItem from="1603050510048" duration="2000" />
+      <workItem from="1604941940095" duration="624000" />
+      <workItem from="1604946025157" duration="260000" />
     </task>
     <servers />
   </component>
@@ -79,30 +110,46 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="728" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601862807878">
+    <state x="728" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602619496223">
       <screen x="0" y="27" width="2560" height="1362" />
     </state>
-    <state x="728" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1362@0.27.2560.1362" timestamp="1601862807878" />
-    <state x="1070" y="389" width="424" height="513" key="FileChooserDialogImpl" timestamp="1601862434271">
+    <state x="728" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1362@0.27.2560.1362" timestamp="1602619496223" />
+    <state x="1070" y="389" width="424" height="513" key="FileChooserDialogImpl" timestamp="1604946034434">
       <screen x="0" y="27" width="2560" height="1362" />
     </state>
-    <state x="1070" y="389" width="424" height="513" key="FileChooserDialogImpl/0.27.2560.1362@0.27.2560.1362" timestamp="1601862434271" />
-    <state width="2514" height="346" key="GridCell.Tab.0.bottom" timestamp="1601862617594">
+    <state x="1070" y="389" width="424" height="513" key="FileChooserDialogImpl/0.27.2560.1362@0.27.2560.1362" timestamp="1604946034434" />
+    <state width="2446" height="396" key="GridCell.Tab.0.bottom" timestamp="1602619499517">
       <screen x="0" y="27" width="2560" height="1362" />
     </state>
-    <state width="2514" height="346" key="GridCell.Tab.0.bottom/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617594" />
-    <state width="2514" height="346" key="GridCell.Tab.0.center" timestamp="1601862617593">
+    <state width="2446" height="396" key="GridCell.Tab.0.bottom/0.27.2560.1362@0.27.2560.1362" timestamp="1602619499517" />
+    <state width="2446" height="396" key="GridCell.Tab.0.center" timestamp="1602619499517">
       <screen x="0" y="27" width="2560" height="1362" />
     </state>
-    <state width="2514" height="346" key="GridCell.Tab.0.center/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617593" />
-    <state width="2514" height="346" key="GridCell.Tab.0.left" timestamp="1601862617593">
+    <state width="2446" height="396" key="GridCell.Tab.0.center/0.27.2560.1362@0.27.2560.1362" timestamp="1602619499517" />
+    <state width="2446" height="396" key="GridCell.Tab.0.left" timestamp="1602619499516">
       <screen x="0" y="27" width="2560" height="1362" />
     </state>
-    <state width="2514" height="346" key="GridCell.Tab.0.left/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617593" />
-    <state width="2514" height="346" key="GridCell.Tab.0.right" timestamp="1601862617593">
+    <state width="2446" height="396" key="GridCell.Tab.0.left/0.27.2560.1362@0.27.2560.1362" timestamp="1602619499516" />
+    <state width="2446" height="396" key="GridCell.Tab.0.right" timestamp="1602619499517">
       <screen x="0" y="27" width="2560" height="1362" />
     </state>
-    <state width="2514" height="346" key="GridCell.Tab.0.right/0.27.2560.1362@0.27.2560.1362" timestamp="1601862617593" />
+    <state width="2446" height="396" key="GridCell.Tab.0.right/0.27.2560.1362@0.27.2560.1362" timestamp="1602619499517" />
+    <state width="2446" height="396" key="GridCell.Tab.1.bottom" timestamp="1602619523413">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2446" height="396" key="GridCell.Tab.1.bottom/0.27.2560.1362@0.27.2560.1362" timestamp="1602619523413" />
+    <state width="2446" height="396" key="GridCell.Tab.1.center" timestamp="1602619523412">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2446" height="396" key="GridCell.Tab.1.center/0.27.2560.1362@0.27.2560.1362" timestamp="1602619523412" />
+    <state width="2446" height="396" key="GridCell.Tab.1.left" timestamp="1602619523412">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2446" height="396" key="GridCell.Tab.1.left/0.27.2560.1362@0.27.2560.1362" timestamp="1602619523412" />
+    <state width="2446" height="396" key="GridCell.Tab.1.right" timestamp="1602619523413">
+      <screen x="0" y="27" width="2560" height="1362" />
+    </state>
+    <state width="2446" height="396" key="GridCell.Tab.1.right/0.27.2560.1362@0.27.2560.1362" timestamp="1602619523413" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -121,6 +168,16 @@
           <url>file://$PROJECT_DIR$/src/bin/my_executable.rs</url>
           <line>22</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/wpool/src/server.rs</url>
+          <line>40</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/wpool/src/server.rs</url>
+          <line>83</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

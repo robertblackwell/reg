@@ -1,0 +1,7 @@
+[package]
+name = "wpool"
+version = "0.0.1"
+authors = ["An Devloper <an.devloper@example.com>"]
+
+[dependencies]
+httpreader = {path = "../parser" }
